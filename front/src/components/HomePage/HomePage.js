@@ -1,31 +1,33 @@
 import React from "react";
+import { connect } from "react-redux";
+import fetchBooks from "../../state/books/actions";
 import BookCard from "./BookCard";
 import style from "./HomePage.module.css";
 
 class HomePage extends React.Component {
-  state = {
-    books: [],
-  };
-
+  constructor(props) {
+    super(props)
+  }
   componentDidMount() {
-    fetch(`http://localhost:3001/api/book`)
-      .then((res) => res.json())
-      .then((data) =>
-        this.setState({
-          books: data.data,
-        })
-      );
+    this.props.fetchBooks()
   }
 
   render() {
     return (
       <>
         <div className={style.bookCards}>
-          <BookCard books={this.state.books} />
+          <BookCard  />
         </div>
       </>
     );
   }
 }
 
-export default HomePage;
+const mapStateToProps = () => ({
+})
+
+const mapDispatchToProps = {
+  fetchBooks,
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(HomePage)

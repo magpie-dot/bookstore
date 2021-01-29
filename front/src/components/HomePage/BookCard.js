@@ -2,21 +2,22 @@ import React from "react";
 import { Card, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 
-function BookCard({ books, addToCart }) {
+const BookCard = (props) => {
+  const { books } = props
   return (
     <>
-      {Object.keys(books).map((key) => (
-          <Card style={{ width: "18rem", margin: "1rem"}} key={books[key].id}>
-            <Card.Img variant="top" src={books[key].cover_url} />
+      {books.map((book) => (
+          <Card style={{ width: "18rem", margin: "1rem"}} key={book.id}>
+            <Card.Img variant="top" src={book.cover_url} />
             <Card.Body>
-              <Card.Title>{books[key].title}</Card.Title>
+              <Card.Title>{book.title}</Card.Title>
               <Card.Text>
-                Autor: {books[key].author}
+                Autor: {book.author}
                 </Card.Text>
                 <Card.Text>
-                Liczba stron: {books[key].pages}
+                Liczba stron: {book.pages}
               </Card.Text>
-              <Button onClick={addToCart} variant="primary">Dodaj do koszyka</Button>
+              <Button variant="primary">Dodaj do koszyka</Button>
             </Card.Body>
           </Card>
       ))}
@@ -24,4 +25,9 @@ function BookCard({ books, addToCart }) {
   );
 }
 
-export default connect()(BookCard)
+const mapStateToProps = (state) => ({
+  books: state.books.booksList,
+});
+
+
+export default connect(mapStateToProps,{})(BookCard)
