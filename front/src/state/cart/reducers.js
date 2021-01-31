@@ -1,7 +1,7 @@
 import types from './types'
 
 const INITIAL_STATE = {
-    isEmpty: false,
+    isEmpty: true,
     booksIdList: [],
 }
 

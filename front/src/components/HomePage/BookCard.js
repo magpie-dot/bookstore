@@ -8,7 +8,6 @@ const BookCard = (props) => {
 
   const handleOnClickAddProductToCart = (idList, bookId) => {
     addProductToCart(idList, bookId);
-    console.log(idList, bookId);
   };
 
   return (
