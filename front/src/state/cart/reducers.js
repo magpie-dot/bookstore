@@ -1,7 +1,8 @@
 import types from './types'
 
 const INITIAL_STATE = {
-    bookIdList: [],
+    isEmpty: false,
+    booksIdList: [],
 }
 
 const cartReducer = (state = INITIAL_STATE, action) => {
@@ -9,12 +10,13 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         case types.ADD_PRODUCT:
             return {
                 ...state,
-                cart: action.dispatch
+                isEmpty: false,
+                booksIdList: action.payload
             }
         case types.REMOVE_PRODUCT:
             return {
                 ...state,
-                cart: []
+                booksIdList: []
             }
         default:
             return state

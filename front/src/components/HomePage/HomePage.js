@@ -8,6 +8,7 @@ class HomePage extends React.Component {
   constructor(props) {
     super(props)
   }
+
   componentDidMount() {
     this.props.fetchBooks()
   }
@@ -16,7 +17,7 @@ class HomePage extends React.Component {
     return (
       <>
         <div className={style.bookCards}>
-          <BookCard  />
+          <BookCard />
         </div>
       </>
     );

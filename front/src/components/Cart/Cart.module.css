@@ -1,0 +1,49 @@
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.listItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.smallContainer {
+    margin: auto 1rem
+}
+
+.image {
+    width: 5rem;
+}
+
+.title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    max-width: 300px;
+    text-align: start;
+}
+
+.smallText {
+    font-size: 0.9rem;
+    color: darkgrey;
+}
+
+.priceContainer {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.priceButton {
+    border-top: 1px solid #6c757d;
+    border-bottom: 1px solid #6c757d;
+    padding: .375rem .75rem;
+    color: #6c757d;
+}
+
+.price {
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin: 10px;
+}

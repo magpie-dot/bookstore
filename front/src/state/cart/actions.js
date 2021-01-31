@@ -1,16 +1,17 @@
 import types from './types'
 
-const addProduct = (bookId) => (dispatch) => {
-    let bookIdList = []
-    bookIdList.push(bookId)
-    dispatch({ type: types.ADD_PRODUCT, payload: bookIdList })
+export const addProductToCart = (booksList, bookId) => (dispatch) => {
+    console.log("action", booksList, bookId);
+    // let bookIdList = [bookList]
+    // bookIdList.push(bookId)
+    dispatch({ type: types.ADD_PRODUCT, payload: [...booksList, bookId] })
 };
 
-const removeProduct = () => (dispatch) => {
+export const removeProduct = () => (dispatch) => {
     dispatch({ type: types.REMOVE_PRODUCT })
 };
 
 export default {
-    addProduct,
+    addProductToCart,
     removeProduct
 }

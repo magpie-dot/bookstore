@@ -14,9 +14,9 @@ const Navigation = (props) => {
         </Nav>
         <Nav>
           <Link to="/cart">
-            {cart.bookIdList.length === 0 ? null : (
+            {cart.booksIdList.length === 0 ? null : (
               <Badge style={{ marginRight: "-0.7rem" }} variant="light">
-                {cart.bookIdList.length}
+                {cart.booksIdList.length}
               </Badge>
             )}
             <img
