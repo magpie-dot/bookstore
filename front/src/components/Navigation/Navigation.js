@@ -4,7 +4,7 @@ import { Navbar, Nav, Badge } from "react-bootstrap";
 import { connect } from "react-redux";
 
 const Navigation = (props) => {
-  const { cart } = props;
+  const { totalBooks } = props;
   return (
     <>
       <Navbar sticky="top" bg="dark" variant="dark">
@@ -14,9 +14,9 @@ const Navigation = (props) => {
         </Nav>
         <Nav>
           <Link to="/cart">
-            {cart.booksIdList.length === 0 ? null : (
+            {!!totalBooks && (
               <Badge style={{ marginRight: "-0.7rem" }} variant="light">
-                {cart.booksIdList.length}
+                {totalBooks}
               </Badge>
             )}
             <img
@@ -34,7 +34,7 @@ const Navigation = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  cart: state.cart,
+  totalBooks: state.cart.totalBooks,
 });
 
 export default connect(mapStateToProps, {})(Navigation);

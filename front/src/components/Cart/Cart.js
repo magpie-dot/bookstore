@@ -6,15 +6,15 @@ import styles from "./Cart.module.css";
 import PriceContainer from "./PriceContainer"
 
 const Cart = (props) => {
-  const { isEmpty, books, booksIdList } = props;
+  const { totalBooks, books, booksInCart } = props;
   return (
     (
       <>
-        {!isEmpty ? (
+        {totalBooks ? (
           <>
             <ListGroup className={styles.container} variant="flush">
               {books
-                .filter((book) => booksIdList.includes(book.id))
+                .filter((book) => Object.keys(booksInCart).includes(`${book.id}`))
                 .map((book) => (
                   <ListGroup.Item style={{ margin: "1rem" }} key={book.id}>
                     <div className={styles.listItem}>
@@ -23,7 +23,7 @@ const Cart = (props) => {
                         <p className={styles.title}>{book.title}</p>
                         <p className={styles.smallText}>{book.author}</p>
                       </div>
-                      <PriceContainer price={book.price}/>
+                      <PriceContainer price={book.price} id={book.id} amount={booksInCart[book.id].amount}/>
                     </div>
                   </ListGroup.Item>
                 ))}
@@ -41,8 +41,8 @@ const Cart = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  isEmpty: state.cart.isEmpty,
-  booksIdList: state.cart.booksIdList,
+  totalBooks: state.cart.totalBooks,
+  booksInCart: state.cart.booksInCart,
   books: state.books.booksList,
 });
 

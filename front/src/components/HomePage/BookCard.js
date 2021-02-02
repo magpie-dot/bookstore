@@ -4,10 +4,10 @@ import { connect } from "react-redux";
 import { addProductToCart } from "../../state/cart/actions";
 
 const BookCard = (props) => {
-  const { books, booksIdList, addProductToCart } = props;
+  const { books, addProductToCart } = props;
 
-  const handleOnClickAddProductToCart = (idList, bookId) => {
-    addProductToCart(idList, bookId);
+  const handleOnClickAddProductToCart = (bookId) => {
+    addProductToCart(bookId);
   };
 
   return (
@@ -20,7 +20,7 @@ const BookCard = (props) => {
             <Card.Text>Autor: {book.author}</Card.Text>
             <Card.Text>Liczba stron: {book.pages}</Card.Text>
             <Button
-              onClick={()=>handleOnClickAddProductToCart(booksIdList, book.id)}
+              onClick={()=>handleOnClickAddProductToCart(book.id)}
               variant="primary"
             >
               Dodaj do koszyka
@@ -34,7 +34,6 @@ const BookCard = (props) => {
 
 const mapStateToProps = (state) => ({
   books: state.books.booksList,
-  booksIdList: state.cart.booksIdList
 });
 
 const mapDispatchToProps = {
