@@ -5,9 +5,6 @@ import BookCard from "./BookCard";
 import style from "./HomePage.module.css";
 
 class HomePage extends React.Component {
-  constructor(props) {
-    super(props)
-  }
 
   componentDidMount() {
     this.props.fetchBooks()
@@ -17,18 +14,19 @@ class HomePage extends React.Component {
     return (
       <>
         <div className={style.bookCards}>
-          <BookCard />
+          {this.props.books.map((book) => (<BookCard book={book} />))}
         </div>
       </>
     );
   }
 }
 
-const mapStateToProps = () => ({
+const mapStateToProps = (state) => ({
+  books: state.books.booksList,
 })
 
 const mapDispatchToProps = {
   fetchBooks,
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(HomePage)
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage)

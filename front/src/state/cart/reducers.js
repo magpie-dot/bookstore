@@ -7,6 +7,13 @@ const INITIAL_STATE = {
 
 const cartReducer = (state = INITIAL_STATE, action) => {
     const { booksInCart, totalBooks } = state;
+
+    const decreaseAmountOfProduct = (id) => {
+        if (booksInCart[id].amount > 1) { return {...booksInCart, [id]: { amount: booksInCart[id].amount - 1 } } } else {
+            delete booksInCart[id]
+        }
+    }
+
     switch (action.type) {
         case types.ADD_PRODUCT:
             return {
@@ -24,7 +31,7 @@ const cartReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 totalBooks: totalBooks - 1,
-                booksInCart: action.booksInCart
+                booksInCart: decreaseAmountOfProduct(action.id)
             }
         default:
             return state

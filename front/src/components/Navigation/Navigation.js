@@ -2,15 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, Badge } from "react-bootstrap";
 import { connect } from "react-redux";
+import style from "../../App.module.css";
 
-const Navigation = (props) => {
-  const { totalBooks } = props;
+const Navigation = ({ totalBooks, children }) => {
   return (
     <>
       <Navbar sticky="top" bg="dark" variant="dark">
         <Navbar.Brand>Księgarnia</Navbar.Brand>
         <Nav className="mr-auto">
-          <Link to="/">Strona główna</Link>
+          <Link className={style.link} to="/">Strona główna</Link>
         </Nav>
         <Nav>
           <Link to="/cart">
@@ -28,7 +28,7 @@ const Navigation = (props) => {
           </Link>
         </Nav>
       </Navbar>
-      <main>{props.children}</main>
+      <main>{children}</main>
     </>
   );
 };

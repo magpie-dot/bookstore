@@ -1,9 +1,9 @@
 import React from "react";
 import { Form, Button, Col } from "react-bootstrap";
 import { connect } from "react-redux";
-import style from "./Formular.module.css";
+import style from "./Form.module.css";
 
-function Formular(props) {
+const Formular = (props) => {
   return (
     <div className={style.formularBox}>
       <Form>
@@ -33,7 +33,7 @@ function Formular(props) {
 }
 
 const mapStateToProps = state => ({
-  formular: state.formular
+  form: state.form
 })
 
 export default connect (mapStateToProps, {})(Formular);
