@@ -3,37 +3,53 @@ import { Form, Button, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 import style from "./Form.module.css";
 
-const Formular = (props) => {
-  return (
-    <div className={style.formularBox}>
-      <Form>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Control placeholder="Imię" />
-        </Form.Group>
+class Formular extends React.Component {
+  state = {
+    order: this.props.booksInCart,
+    first_name: "",
+    last_name: "",
+    city: "",
+    zip_code:"",
+  };
 
-        <Form.Group controlId="formBasicPassword">
-          <Form.Control placeholder="Nazwisko" />
-        </Form.Group>
-        <Form.Row>
-        <Form.Group as={Col} controlId="formBasicPassword">
-          <Form.Control placeholder="Miejscowość" />
-        </Form.Group>
+  handleOnChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
 
-        <Form.Group as={Col} controlId="formBasicPassword">
-          <Form.Control placeholder="Kod pocztowy" />
-        </Form.Group>
-        </Form.Row>
+  render() {
+    return (
+      <div className={style.formularBox}>
+        <Form>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Control placeholder="Imię" />
+          </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
-    </div>
-  );
+          <Form.Group controlId="formBasicPassword">
+            <Form.Control placeholder="Nazwisko" />
+          </Form.Group>
+          <Form.Row>
+            <Form.Group as={Col} controlId="formBasicPassword">
+              <Form.Control placeholder="Miejscowość" />
+            </Form.Group>
+
+            <Form.Group as={Col} controlId="formBasicPassword">
+              <Form.Control placeholder="Kod pocztowy" />
+            </Form.Group>
+          </Form.Row>
+
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
+      </div>
+    );
+  }
 }
 
-const mapStateToProps = state => ({
-  form: state.form
-})
+const mapStateToProps = (state) => ({
+  booksInCart: state.cart.booksInCart
+});
 
-export default connect (mapStateToProps, {})(Formular);
+export default connect(mapStateToProps, {})(Formular);

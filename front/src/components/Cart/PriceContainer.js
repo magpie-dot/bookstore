@@ -3,20 +3,19 @@ import { Button, ButtonGroup } from "react-bootstrap";
 import styles from "./Cart.module.css";
 import { connect } from "react-redux";
 import {
-  increaseAmountOfProduct,
-  decreaseAmountOfProduct,
+  increaseQuantityOfProduct,
+  decreaseQuantityOfProduct,
 } from "../../state/cart/actions";
 
 const PriceContainer = ({
-  booksInCart,
-  amount,
+  quantity,
   price,
   id,
-  increaseAmountOfProduct,
-  decreaseAmountOfProduct,
+  increaseQuantityOfProduct,
+  decreaseQuantityOfProduct,
 }) => {
   const showPrice = (price) => {
-    return ((price / 100) * amount).toFixed(2);
+    return ((price / 100) * quantity).toFixed(2);
   };
 
   return (
@@ -24,14 +23,14 @@ const PriceContainer = ({
       <ButtonGroup variant="outline-secondary">
         <Button
           variant="outline-secondary"
-          onClick={() => decreaseAmountOfProduct(id)}
+          onClick={() => decreaseQuantityOfProduct(id)}
         >
           -
         </Button>
-        <div className={styles.priceButton}>{amount}</div>
+        <div className={styles.priceButton}> {quantity} </div>
         <Button
           variant="outline-secondary"
-          onClick={() => increaseAmountOfProduct(id)}
+          onClick={() => increaseQuantityOfProduct(id)}
         >
           +
         </Button>
@@ -41,13 +40,9 @@ const PriceContainer = ({
   );
 };
 
-const mapStateToProps = (state) => ({
-  booksInCart: state.cart.booksInCart,
-});
-
 const mapDispatchToProps = {
-  increaseAmountOfProduct,
-  decreaseAmountOfProduct,
+  increaseQuantityOfProduct,
+  decreaseQuantityOfProduct,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PriceContainer);
+export default connect(null, mapDispatchToProps)(PriceContainer);

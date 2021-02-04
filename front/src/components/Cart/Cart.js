@@ -25,7 +25,7 @@ const Cart = ({ totalBooks, books, booksInCart }) => {
                     <PriceContainer
                       price={book.price}
                       id={book.id}
-                      amount={booksInCart[book.id].amount}
+                      quantity={booksInCart[book.id].quantity}
                     />
                   </div>
                 </ListGroup.Item>

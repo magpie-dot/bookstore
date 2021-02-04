@@ -8,9 +8,10 @@ const INITIAL_STATE = {
 const cartReducer = (state = INITIAL_STATE, action) => {
     const { booksInCart, totalBooks } = state;
 
-    const decreaseAmountOfProduct = (id) => {
-        if (booksInCart[id].amount > 1) { return {...booksInCart, [id]: { amount: booksInCart[id].amount - 1 } } } else {
+    const decreaseQuantityOfProduct = (id) => {
+        if (booksInCart[id].quantity > 1) { return {...booksInCart, [id]: { quantity: booksInCart[id].quantity - 1 } } } else {
             delete booksInCart[id]
+            return booksInCart
         }
     }
 
@@ -19,19 +20,19 @@ const cartReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 totalBooks: totalBooks + 1,
-                booksInCart: booksInCart[action.id] ? {...booksInCart, [action.id]: { amount: booksInCart[action.id].amount + 1 } } : {...booksInCart, [action.id]: { amount: 1 } }
+                booksInCart: booksInCart[action.id] ? {...booksInCart, [action.id]: { quantity: booksInCart[action.id].quantity + 1 } } : {...booksInCart, [action.id]: { quantity: 1 } }
             }
-        case types.INCREASE_AMOUNT_OF_PRODUCT:
+        case types.INCREASE_QUANTITY_OF_PRODUCT:
             return {
                 ...state,
                 totalBooks: totalBooks + 1,
-                booksInCart: {...booksInCart, [action.id]: { amount: booksInCart[action.id].amount + 1 } }
+                booksInCart: {...booksInCart, [action.id]: { quantity: booksInCart[action.id].quantity + 1 } }
             }
-        case types.DECREASE_AMOUNT_OF_PRODUCT:
+        case types.DECREASE_QUANTITY_OF_PRODUCT:
             return {
                 ...state,
                 totalBooks: totalBooks - 1,
-                booksInCart: decreaseAmountOfProduct(action.id)
+                booksInCart: decreaseQuantityOfProduct(action.id)
             }
         default:
             return state
