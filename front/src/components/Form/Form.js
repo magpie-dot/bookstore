@@ -2,7 +2,8 @@ import React from "react";
 import { Form, Button, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 import style from "./Form.module.css";
-import { clearCart } from "../../state/cart/actions"
+import { clearCart } from "../../state/cart/actions";
+import checkValidation from "./utils";
 
 const initialState = {
     order: [],
@@ -13,13 +14,7 @@ const initialState = {
 }
 
 class Formular extends React.Component {
-  state = {
-    order: [],
-    first_name: "",
-    last_name: "",
-    city: "",
-    zip_code: "",
-  };
+  state = initialState;
 
   prepareBooksInCartToPost = (booksInCart) => {
     const idsArray = Object.keys(booksInCart);
@@ -33,15 +28,15 @@ class Formular extends React.Component {
 
 
   handleSubmit = () => {
-    fetch("http://localhost:3001/api/order", {
-      method: "POST",
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(this.state),
-    }).then(() => { this.props.clearCart();
-      this.setState(initialState)})
-      
-      .catch((err) => { console.log("Coś nie wyszło", err);
-      })
+    checkValidation(this.state)
+    // fetch("http://localhost:3001/api/order", {
+    //   method: "POST",
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify(this.state),
+    // }).then(() => { this.props.clearCart();
+    //   this.setState(initialState)})
+    //   .catch((err) => { console.log("Coś nie wyszło", err);
+    //   })
   };
 
   handleOnChange = (event) => {
@@ -96,7 +91,7 @@ class Formular extends React.Component {
           </Form.Row>
 
           <Button variant="secondary" onClick={this.handleSubmit}>
-            Submit
+            Zamawiam i płacę
           </Button>
         </Form>
       </div>
