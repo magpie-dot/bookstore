@@ -11,9 +11,13 @@ export const increaseQuantityOfProduct = (bookId) => (dispatch) => {
 export const decreaseQuantityOfProduct = (bookId) => (dispatch) => {
     dispatch({ type: types.DECREASE_QUANTITY_OF_PRODUCT, id: bookId })
 };
+export const clearCart = () => (dispatch) => {
+    dispatch({ type: types.CLEAR_CART })
+}
 
 export default {
     addProductToCart,
     increaseQuantityOfProduct,
-    decreaseQuantityOfProduct
+    decreaseQuantityOfProduct,
+    clearCart
 }

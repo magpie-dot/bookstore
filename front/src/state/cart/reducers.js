@@ -34,6 +34,11 @@ const cartReducer = (state = INITIAL_STATE, action) => {
                 totalBooks: totalBooks - 1,
                 booksInCart: decreaseQuantityOfProduct(action.id)
             }
+        case types.CLEAR_CART:
+            return {
+                totalBooks: 0,
+                booksInCart: {}
+            }
         default:
             return state
     }

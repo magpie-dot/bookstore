@@ -2,14 +2,46 @@ import React from "react";
 import { Form, Button, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 import style from "./Form.module.css";
+import { clearCart } from "../../state/cart/actions"
 
-class Formular extends React.Component {
-  state = {
-    order: this.props.booksInCart,
+const initialState = {
+    order: [],
     first_name: "",
     last_name: "",
     city: "",
-    zip_code:"",
+    zip_code: "",
+}
+
+class Formular extends React.Component {
+  state = {
+    order: [],
+    first_name: "",
+    last_name: "",
+    city: "",
+    zip_code: "",
+  };
+
+  prepareBooksInCartToPost = (booksInCart) => {
+    const idsArray = Object.keys(booksInCart);
+    const orderToPost = idsArray.map((id) => {
+      return { id: Number(id), quantity: booksInCart[id].quantity };
+    });
+    this.setState({
+      order: orderToPost,
+    });
+  };
+
+
+  handleSubmit = () => {
+    fetch("http://localhost:3001/api/order", {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(this.state),
+    }).then(() => { this.props.clearCart();
+      this.setState(initialState)})
+      
+      .catch((err) => { console.log("Coś nie wyszło", err);
+      })
   };
 
   handleOnChange = (event) => {
@@ -18,28 +50,52 @@ class Formular extends React.Component {
     });
   };
 
+  componentDidMount() {
+    this.prepareBooksInCartToPost(this.props.booksInCart);
+  }
+
   render() {
     return (
       <div className={style.formularBox}>
         <Form>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Control placeholder="Imię" />
+          <Form.Group>
+            <Form.Control
+              placeholder="Imię"
+              name="first_name"
+              value={this.state.first_name}
+              onChange={this.handleOnChange}
+            />
           </Form.Group>
 
-          <Form.Group controlId="formBasicPassword">
-            <Form.Control placeholder="Nazwisko" />
+          <Form.Group>
+            <Form.Control
+              placeholder="Nazwisko"
+              name="last_name"
+              value={this.state.last_name}
+              onChange={this.handleOnChange}
+            />
           </Form.Group>
           <Form.Row>
-            <Form.Group as={Col} controlId="formBasicPassword">
-              <Form.Control placeholder="Miejscowość" />
+            <Form.Group as={Col}>
+              <Form.Control
+                placeholder="Miejscowość"
+                name="city"
+                value={this.state.city}
+                onChange={this.handleOnChange}
+              />
             </Form.Group>
 
-            <Form.Group as={Col} controlId="formBasicPassword">
-              <Form.Control placeholder="Kod pocztowy" />
+            <Form.Group as={Col}>
+              <Form.Control
+                placeholder="Kod pocztowy"
+                name="zip_code"
+                value={this.state.zip_code}
+                onChange={this.handleOnChange}
+              />
             </Form.Group>
           </Form.Row>
 
-          <Button variant="primary" type="submit">
+          <Button variant="secondary" onClick={this.handleSubmit}>
             Submit
           </Button>
         </Form>
@@ -49,7 +105,11 @@ class Formular extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  booksInCart: state.cart.booksInCart
+  booksInCart: state.cart.booksInCart,
 });
 
-export default connect(mapStateToProps, {})(Formular);
+const mapDispatchToProps = {
+  clearCart
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Formular);
