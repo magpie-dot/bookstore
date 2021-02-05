@@ -11,8 +11,7 @@ const initialState = {
   last_name: "",
   city: "",
   zip_code: "",
-  validation: null,
-  validationElements: {},
+  validation: true,
 };
 
 class Formular extends React.Component {
@@ -30,12 +29,9 @@ class Formular extends React.Component {
 
   handleSubmit = () => {
     let validationElements = checkValidation(this.state);
-    this.setState({ ...this.state, validationElements });
-    console.log(validationElements);
     let valueValidationElementsArray = Object.values(validationElements).filter(
       (element) => element === false
     );
-    console.log(valueValidationElementsArray);
     if (valueValidationElementsArray.length > 0) {
       this.setState({ ...this.state, validation: false });
     } else {
@@ -46,7 +42,6 @@ class Formular extends React.Component {
         city: this.state.city,
         zip_code: this.state.zip_code,
       };
-      console.log(dataToPost);
       fetch("http://localhost:3001/api/order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -57,7 +52,7 @@ class Formular extends React.Component {
           this.setState(initialState);
         })
         .catch((err) => {
-          console.log("Coś nie wyszło", err);
+          console.log(err);
         });
     }
   };
@@ -66,6 +61,11 @@ class Formular extends React.Component {
     this.setState({
       [event.target.name]: event.target.value,
     });
+  };
+
+  checkElementValidation = (element) => {
+    let validationElements = checkValidation(this.state);
+    return validationElements[element];
   };
 
   componentDidMount() {
@@ -78,38 +78,70 @@ class Formular extends React.Component {
         <Form>
           <Form.Group>
             <Form.Control
+              isInvalid={
+                this.state.validation
+                  ? false
+                  : !this.checkElementValidation("firstNameValidation")
+              }
               placeholder="Imię"
               name="first_name"
               value={this.state.first_name}
               onChange={this.handleOnChange}
             />
+            <Form.Control.Feedback type="invalid">
+              Wymagane 4 - 50 znaków
+            </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group>
             <Form.Control
+              isInvalid={
+                this.state.validation
+                  ? false
+                  : !this.checkElementValidation("lastNameValidation")
+              }
               placeholder="Nazwisko"
               name="last_name"
               value={this.state.last_name}
               onChange={this.handleOnChange}
             />
+            <Form.Control.Feedback type="invalid">
+              Wymagane 5 - 50 znaków
+            </Form.Control.Feedback>
           </Form.Group>
           <Form.Row>
             <Form.Group as={Col}>
               <Form.Control
+                isInvalid={
+                  this.state.validation
+                    ? false
+                    : !this.checkElementValidation("cityValidation")
+                }
                 placeholder="Miejscowość"
                 name="city"
                 value={this.state.city}
                 onChange={this.handleOnChange}
-              />
+              />  
+              <Form.Control.Feedback type="invalid">
+              Pole wymagane
+            </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group as={Col}>
               <Form.Control
+                isInvalid={
+                  this.state.validation
+                    ? false
+                    : !this.checkElementValidation("zipCodeValidation")
+                }
                 placeholder="Kod pocztowy"
                 name="zip_code"
                 value={this.state.zip_code}
                 onChange={this.handleOnChange}
               />
+              <Form.Control.Feedback type="invalid">
+              Wymagany format _ _ - _ _ _
+            </Form.Control.Feedback>
             </Form.Group>
           </Form.Row>
 

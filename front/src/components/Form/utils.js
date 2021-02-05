@@ -3,7 +3,7 @@ import Joi from "joi";
 const schemaFirstName = Joi.string().min(4).max(50).required();
 const schemaLastName = Joi.string().min(5).max(50).required();
 const schemaCity = Joi.string().required();
-const schemaZipCode = Joi.string().regex(/\d{2}-\d{3}/).required();
+const schemaZipCode = Joi.string().regex(/\d{2}-\d{3}/).max(6).required();
 
 
 const checkValidation = (formData) => {
