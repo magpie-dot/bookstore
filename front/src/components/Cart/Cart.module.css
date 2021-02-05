@@ -27,6 +27,7 @@
 .smallText {
     font-size: 0.9rem;
     color: darkgrey;
+    text-align: start;
 }
 
 .priceContainer {
@@ -46,4 +47,9 @@
     font-weight: 500;
     font-size: 1.2rem;
     margin: 10px;
+}
+
+.info {
+    margin: 50px auto;
+    font-size: 2rem
 }

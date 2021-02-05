@@ -31,12 +31,14 @@ const Cart = ({ totalBooks, books, booksInCart }) => {
                 </ListGroup.Item>
               ))}
           </ListGroup>
-          <Button variant="secondary">
-            <Link className={style.link} to="/formular">Dalej</Link>
+          <Button variant="secondary" style={{margin: "2rem auto"}}>
+            <Link className={style.link} to="/formular">
+              Dalej
+            </Link>
           </Button>
         </>
       ) : (
-        <div>Jeszcze nie dodałeś nic do koszyka</div>
+        <div className={styles.info}>Twój koszyk jest pusty</div>
       )}
     </>
   );

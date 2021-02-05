@@ -2,3 +2,8 @@
     max-width: 800px;
     margin: 3rem auto;
 }
+
+.info {
+    margin: 50px auto;
+    font-size: 2rem;
+}

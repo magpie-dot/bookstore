@@ -2,6 +2,7 @@ import types from './types'
 
 const INITIAL_STATE = {
     booksList: [],
+    isOrder: false,
     error: null,
 };
 
@@ -11,7 +12,13 @@ const booksReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 booksList: action.payload,
+                isOrder: false,
             };
+        case types.SET_ORDER:
+            return {
+                ...state,
+                isOrder: true,
+            }
         case types.SET_ERROR:
             return {
                 ...state,

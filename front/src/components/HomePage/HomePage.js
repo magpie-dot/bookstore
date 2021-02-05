@@ -19,14 +19,14 @@ class HomePage extends React.Component {
       </>
     );
   }
-}
+};
 
 const mapStateToProps = (state) => ({
   books: state.books.booksList,
-})
+});
 
 const mapDispatchToProps = {
   fetchBooks,
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage)

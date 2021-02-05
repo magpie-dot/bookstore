@@ -4,6 +4,9 @@ import { connect } from "react-redux";
 import style from "./Form.module.css";
 import { clearCart } from "../../state/cart/actions";
 import checkValidation from "./utils";
+import EndOfOrder from "./EndOfOrder";
+
+const POST_URL = "http://localhost:3001/api/order";
 
 const initialState = {
   order: [],
@@ -12,6 +15,7 @@ const initialState = {
   city: "",
   zip_code: "",
   validation: true,
+  isOrder: false,
 };
 
 class Formular extends React.Component {
@@ -42,14 +46,14 @@ class Formular extends React.Component {
         city: this.state.city,
         zip_code: this.state.zip_code,
       };
-      fetch("http://localhost:3001/api/order", {
+      fetch(POST_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dataToPost),
       })
         .then(() => {
           this.props.clearCart();
-          this.setState(initialState);
+          this.setState({...initialState, isOrder:true});
         })
         .catch((err) => {
           console.log(err);
@@ -74,6 +78,7 @@ class Formular extends React.Component {
 
   render() {
     return (
+      !this.state.isOrder ?
       <div className={style.formularBox}>
         <Form>
           <Form.Group>
@@ -121,10 +126,10 @@ class Formular extends React.Component {
                 name="city"
                 value={this.state.city}
                 onChange={this.handleOnChange}
-              />  
+              />
               <Form.Control.Feedback type="invalid">
-              Pole wymagane
-            </Form.Control.Feedback>
+                Pole wymagane
+              </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group as={Col}>
@@ -140,8 +145,8 @@ class Formular extends React.Component {
                 onChange={this.handleOnChange}
               />
               <Form.Control.Feedback type="invalid">
-              Wymagany format _ _ - _ _ _
-            </Form.Control.Feedback>
+                Wymagany format _ _ - _ _ _
+              </Form.Control.Feedback>
             </Form.Group>
           </Form.Row>
 
@@ -150,6 +155,7 @@ class Formular extends React.Component {
           </Button>
         </Form>
       </div>
+      : <EndOfOrder/>
     );
   }
 }
