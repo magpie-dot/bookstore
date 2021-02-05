@@ -8,10 +8,10 @@ const schemaZipCode = Joi.string().regex(/\d{2}-\d{3}/).required();
 
 const checkValidation = (formData) => {
     let firstNameValidation, lastNameValidation, cityValidation, zipCodeValidation;
-    firstNameValidation = schemaFirstName.validate(formData.first_name)
-    lastNameValidation = schemaLastName.validate(formData.last_name)
-    cityValidation = schemaCity.validate(formData.city)
-    zipCodeValidation = schemaZipCode.validate(formData.zip_code)
+    firstNameValidation = schemaFirstName.validate(formData.first_name).error ? false : true;
+    lastNameValidation = schemaLastName.validate(formData.last_name).error ? false : true;
+    cityValidation = schemaCity.validate(formData.city).error ? false : true;
+    zipCodeValidation = schemaZipCode.validate(formData.zip_code).error ? false : true;
 
     const validation = {
         firstNameValidation,
@@ -19,8 +19,6 @@ const checkValidation = (formData) => {
         cityValidation,
         zipCodeValidation
     }
-    console.log(validation);
-
     return validation
 }
 

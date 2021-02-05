@@ -6,12 +6,14 @@ import { clearCart } from "../../state/cart/actions";
 import checkValidation from "./utils";
 
 const initialState = {
-    order: [],
-    first_name: "",
-    last_name: "",
-    city: "",
-    zip_code: "",
-}
+  order: [],
+  first_name: "",
+  last_name: "",
+  city: "",
+  zip_code: "",
+  validation: null,
+  validationElements: {},
+};
 
 class Formular extends React.Component {
   state = initialState;
@@ -26,17 +28,38 @@ class Formular extends React.Component {
     });
   };
 
-
   handleSubmit = () => {
-    checkValidation(this.state)
-    // fetch("http://localhost:3001/api/order", {
-    //   method: "POST",
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(this.state),
-    // }).then(() => { this.props.clearCart();
-    //   this.setState(initialState)})
-    //   .catch((err) => { console.log("Coś nie wyszło", err);
-    //   })
+    let validationElements = checkValidation(this.state);
+    this.setState({ ...this.state, validationElements });
+    console.log(validationElements);
+    let valueValidationElementsArray = Object.values(validationElements).filter(
+      (element) => element === false
+    );
+    console.log(valueValidationElementsArray);
+    if (valueValidationElementsArray.length > 0) {
+      this.setState({ ...this.state, validation: false });
+    } else {
+      const dataToPost = {
+        order: this.state.order,
+        first_name: this.state.first_name,
+        last_name: this.state.last_name,
+        city: this.state.city,
+        zip_code: this.state.zip_code,
+      };
+      console.log(dataToPost);
+      fetch("http://localhost:3001/api/order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dataToPost),
+      })
+        .then(() => {
+          this.props.clearCart();
+          this.setState(initialState);
+        })
+        .catch((err) => {
+          console.log("Coś nie wyszło", err);
+        });
+    }
   };
 
   handleOnChange = (event) => {
@@ -104,7 +127,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  clearCart
-}
+  clearCart,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Formular);
