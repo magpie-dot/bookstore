@@ -1,24 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import fetchBooks from "../../state/books/actions";
 import BookCard from "./BookCard";
 import style from "./HomePage.module.css";
 
-class HomePage extends React.Component {
+const HomePage = (props) => {
+  const { fetchBooks, books } = props;
 
-  componentDidMount() {
-    this.props.fetchBooks()
-  }
+  useEffect(() => {
+    fetchBooks();
+  },[]);
 
-  render() {
-    return (
-      <>
-        <div className={style.bookCards}>
-          {this.props.books.map((book) => (<BookCard book={book} />))}
-        </div>
-      </>
-    );
-  }
+  return (
+    <>
+      <div className={style.bookCards}>
+        {books.map((book) => (
+          <BookCard book={book} />
+        ))}
+      </div>
+    </>
+  );
 };
 
 const mapStateToProps = (state) => ({
@@ -29,4 +30,4 @@ const mapDispatchToProps = {
   fetchBooks,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage)
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
