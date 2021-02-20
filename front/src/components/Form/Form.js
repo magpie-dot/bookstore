@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Form, Button, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 import style from "./Form.module.css";
