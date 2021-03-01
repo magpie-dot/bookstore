@@ -7,7 +7,7 @@ const Search = ({onValueChange}) => {
         <div className={style.searchContainer}>
         <Form>
           <Form.Row className="justify-content-center">
-              <img src="images/search-icon.svg" alt="search icon" style={{marginRight: "1rem"}}/>
+              <img src="images/search-icon.svg" alt="search icon" style={{marginRight: "1rem", height:"2rem"}}/>
             <Col xs={5}>
               <FormControl type="text" placeholder="Wpisz tytuł książki, której szukasz..." onChange={onValueChange} />
             </Col>
