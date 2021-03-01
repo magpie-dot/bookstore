@@ -6,19 +6,34 @@ import BookCard from "./BookCard";
 import style from "./HomePage.module.css";
 
 const HomePage = (props) => {
-  const { fetchBooks, books } = props;
+  const {fetchBooks, books, isLoading} = props;
 
-  const [filteredBooks, setFilteredBooks] = useState({
-    filteredTitles: [],
-    filter: "",
-  });
+  const [bookList, setBookList] = useState([])
+  const [searchTerm, setSearchTerm] = useState("");
 
   const onValueChange = (event) => {
-    let filteredTitles = books.filter((book) =>
-      book.title.toLowerCase().includes(event.target.value.toLowerCase().trim())
-    );
-    setFilteredBooks({ filteredTitles, filter: event.target.value });
+    setSearchTerm(event.target.value);
   };
+
+  const searchTermInBookList = (searchTerm) => {
+    fetch(`http://localhost:3001/api/book?search[title]=${searchTerm}`)
+    .then((res) => res.json())
+    .then((bookData) => {
+      console.log(bookData.data[2])
+      const booksList = Object.keys(bookData.data).map((key) => books.data[key]);
+        setBookList(booksList)
+    })
+  }
+
+  useEffect(() => {
+    if (searchTerm !== ""){
+    searchTermInBookList(searchTerm)}
+  }, [searchTerm]);
+
+  useEffect(() => {
+    if (searchTerm === ""){
+    setBookList(books)}
+  })
 
   useEffect(() => {
     fetchBooks();
@@ -28,12 +43,12 @@ const HomePage = (props) => {
     <>
       <Search onValueChange={onValueChange} />
       <div className={style.bookCards}>
-        {filteredBooks.filter === "" ? (
-          books.map((book) => <BookCard book={book} />)
-        ) : filteredBooks.filteredTitles.length === 0 ? (
-          <div style={{fontSize: 20}}>Niestety w naszej ofercie nie mamy takiej książki</div>
+        {!isLoading && searchTerm !== "" && bookList.length === 0 ? (
+          <div style={{ fontSize: 20 }}>
+            Niestety w naszej ofercie nie mamy takiej książki
+          </div>
         ) : (
-          filteredBooks.filteredTitles.map((book) => <BookCard book={book} />)
+          bookList.map((book) => <BookCard book={book} />)
         )}
       </div>
     </>
@@ -42,6 +57,7 @@ const HomePage = (props) => {
 
 const mapStateToProps = (state) => ({
   books: state.books.booksList,
+  isLoading: state.books.isLoading,
 });
 
 const mapDispatchToProps = {

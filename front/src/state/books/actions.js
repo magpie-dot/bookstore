@@ -3,6 +3,8 @@ import types from './types'
 const API_URL = `http://localhost:3001/api/book`;
 
 const fetchBooks = () => (dispatch) => {
+    dispatch({ type: types.SET_LOADING })
+
     fetch(API_URL)
         .then((res) => res.json())
         .then((books) => {
