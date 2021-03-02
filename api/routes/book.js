@@ -4,8 +4,8 @@ const { ResourceNotFoundError } = require('../errors');
 const books = require('../files/books');
 
 const getPredicate = ({ title = '', author = '' }) => item => (
-    item.title.match(new RegExp(title, 'g')) &&
-    item.author.match(new RegExp(author, 'g'))
+    item.title.match(new RegExp(title, 'gi')) &&
+    item.author.match(new RegExp(author, 'gi'))
 );
 
 const getBookWithCoverUrl = (req, book) => {

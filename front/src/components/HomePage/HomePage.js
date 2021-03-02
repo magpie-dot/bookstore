@@ -27,6 +27,7 @@ const HomePage = (props) => {
   useEffect(() => {
     if (searchTerm !== ""){
     searchTermInBookList(searchTerm)}
+    else setBookList(books)
   }, [searchTerm]);
 
   useEffect(() => {
