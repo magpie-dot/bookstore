@@ -8,19 +8,18 @@ import style from "./HomePage.module.css";
 const HomePage = (props) => {
   const {fetchBooks, books, isLoading} = props;
 
-  const [bookList, setBookList] = useState([])
+  const [bookList, setBookList] = useState(books)
   const [searchTerm, setSearchTerm] = useState("");
 
   const onValueChange = (event) => {
-    setSearchTerm(event.target.value);
+    setSearchTerm(event.target.value.toLowerCase().trim());
   };
 
   const searchTermInBookList = (searchTerm) => {
     fetch(`http://localhost:3001/api/book?search[title]=${searchTerm}`)
     .then((res) => res.json())
     .then((bookData) => {
-      console.log(bookData.data[2])
-      const booksList = Object.keys(bookData.data).map((key) => books.data[key]);
+      const booksList = Object.keys(bookData.data).map((key) => bookData.data[key]);
         setBookList(booksList)
     })
   }
@@ -31,19 +30,18 @@ const HomePage = (props) => {
   }, [searchTerm]);
 
   useEffect(() => {
-    if (searchTerm === ""){
-    setBookList(books)}
-  })
+    setBookList(books)
+  }, [isLoading])
 
   useEffect(() => {
     fetchBooks();
   }, []);
 
-  return (
+  return  (
     <>
       <Search onValueChange={onValueChange} />
       <div className={style.bookCards}>
-        {!isLoading && searchTerm !== "" && bookList.length === 0 ? (
+        {searchTerm !== "" && bookList.length === 0 ? (
           <div style={{ fontSize: 20 }}>
             Niestety w naszej ofercie nie mamy takiej książki
           </div>
