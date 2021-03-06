@@ -47,7 +47,7 @@ const HomePage = (props) => {
             Niestety w naszej ofercie nie mamy takiej książki
           </div>
         ) : (
-          bookList.map((book) => <BookCard book={book} />)
+          bookList.map((book, key) => <BookCard key={key} book={book} />)
         )}
       </div>
     </>

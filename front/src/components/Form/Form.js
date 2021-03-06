@@ -6,8 +6,6 @@ import { clearCart } from "../../state/cart/actions";
 import checkValidation from "./utils";
 import EndOfOrder from "./EndOfOrder";
 
-const POST_URL = "http://localhost:3001/api/order";
-
 const initialFormData = {
   first_name: "",
   last_name: "",
@@ -37,25 +35,11 @@ const Formular = ({ booksInCart, clearCart }) => {
     if (valueValidationElementsArray.length > 0) {
       setValidation(false);
     } else {
-      const dataToPost = {
-        order: order,
-        ...formData,
-      };
-      fetch(POST_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(dataToPost),
-      })
-        .then(() => {
           clearCart();
           setFormData(initialFormData);
           setValidation(true);
           setOrder([]);
-          setIsOrder(true);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+          setIsOrder(true);      
     }
   };
 
