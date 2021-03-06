@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Form, FormControl, Button } from "react-bootstrap";
+import { Col, Form, FormControl } from "react-bootstrap";
 import style from "./HomePage.module.css";
 
 const Search = ({onValueChange}) => {
