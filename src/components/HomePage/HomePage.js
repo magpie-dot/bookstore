@@ -15,27 +15,22 @@ const HomePage = (props) => {
     setSearchTerm(event.target.value.toLowerCase().trim());
   };
 
-  const searchTermInBookList = (searchTerm) => {
-    fetch(`http://localhost:3001/api/book?search[title]=${searchTerm}`)
-    .then((res) => res.json())
-    .then((bookData) => {
-      const booksList = Object.keys(bookData.data).map((key) => bookData.data[key]);
-        setBookList(booksList)
-    })
-  }
+ useEffect(() => {
+  if (searchTerm !== ""){
+    const filteredBooks = books.filter((book) =>
+      book.title.toLowerCase().includes(searchTerm)
+    );
+    setBookList(filteredBooks);}
+    else setBookList(books) // eslint-disable-next-line
+  }, [searchTerm]);  
+
 
   useEffect(() => {
-    if (searchTerm !== ""){
-    searchTermInBookList(searchTerm)}
-    else setBookList(books)
-  }, [searchTerm]);
-
-  useEffect(() => {
-    setBookList(books)
+    setBookList(books) // eslint-disable-next-line
   }, [isLoading])
 
   useEffect(() => {
-    fetchBooks();
+    fetchBooks(); // eslint-disable-next-line
   }, []);
 
   return  (
