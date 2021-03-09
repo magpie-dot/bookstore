@@ -9,8 +9,13 @@ import EndOfOrder from "./EndOfOrder";
 const initialFormData = {
   first_name: "",
   last_name: "",
+  street: "",
+  houseNumber: "",
+  local: "",
   city: "",
   zip_code: "",
+  phone: "",
+  mail: "",
 };
 
 const Formular = ({ booksInCart, clearCart }) => {
@@ -35,20 +40,22 @@ const Formular = ({ booksInCart, clearCart }) => {
     if (valueValidationElementsArray.length > 0) {
       setValidation(false);
     } else {
-          clearCart();
-          setFormData(initialFormData);
-          setValidation(true);
-          setOrder([]);
-          setIsOrder(true);      
+      clearCart();
+      setFormData(initialFormData);
+      setValidation(true);
+      setOrder([]);
+      setIsOrder(true);
     }
   };
 
   const handleOnChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
+    console.log(formData)
   };
 
   const checkElementValidation = (element) => {
     let validationElements = checkValidation(formData);
+    console.log(validationElements[element])
     return validationElements[element];
   };
 
@@ -59,6 +66,7 @@ const Formular = ({ booksInCart, clearCart }) => {
   return !isOrder ? (
     <div className={style.formularBox}>
       <Form>
+
         <Form.Group>
           <Form.Control
             isInvalid={
@@ -72,7 +80,7 @@ const Formular = ({ booksInCart, clearCart }) => {
             onChange={handleOnChange}
           />
           <Form.Control.Feedback type="invalid">
-            Wymagane 4 - 50 znaków
+            Pole wymagane
           </Form.Control.Feedback>
         </Form.Group>
 
@@ -87,10 +95,56 @@ const Formular = ({ booksInCart, clearCart }) => {
             onChange={handleOnChange}
           />
           <Form.Control.Feedback type="invalid">
-            Wymagane 5 - 50 znaków
+            Pole wymagane
           </Form.Control.Feedback>
         </Form.Group>
+
         <Form.Row>
+
+          <Form.Group as={Col} md="6">
+            <Form.Control
+              isInvalid={
+                validation ? false : !checkElementValidation("streetValidation")
+              }
+              placeholder="Ulica"
+              name="street"
+              value={formData.street}
+              onChange={handleOnChange}
+            />
+            <Form.Control.Feedback type="invalid">
+              Pole wymagane
+            </Form.Control.Feedback>
+          </Form.Group>
+
+          <Form.Group as={Col} md="3">
+            <Form.Control
+              isInvalid={
+                validation ? false : !checkElementValidation("houseNumberValidation")
+              }
+              placeholder="Numer"
+              name="houseNumber"
+              value={formData.houseNumber}
+              onChange={handleOnChange}
+            />
+            <Form.Control.Feedback type="invalid">
+              Pole wymagane
+            </Form.Control.Feedback>
+          </Form.Group>
+
+          <Form.Group as={Col} md="3">
+            <Form.Control
+              isInvalid = {false}
+              placeholder="Lokal"
+              name="local"
+              value={formData.local}
+              onChange={handleOnChange}
+            />
+          </Form.Group>
+
+        </Form.Row>
+
+        <Form.Row>
+
           <Form.Group as={Col}>
             <Form.Control
               isInvalid={
@@ -122,7 +176,38 @@ const Formular = ({ booksInCart, clearCart }) => {
               Wymagany format _ _ - _ _ _
             </Form.Control.Feedback>
           </Form.Group>
+
         </Form.Row>
+
+        <Form.Group>
+          <Form.Control
+            isInvalid={
+              validation ? false : !checkElementValidation("phoneValidation")
+            }
+            placeholder="Numer telefonu"
+            name="phone"
+            value={formData.phone}
+            onChange={handleOnChange}
+          />
+          <Form.Control.Feedback type="invalid">
+            Pole wymagane
+          </Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Control
+            isInvalid={
+              validation ? false : !checkElementValidation("mailValidation")
+            }
+            placeholder="Adres e-mail"
+            name="mail"
+            value={formData.mail}
+            onChange={handleOnChange}
+          />
+          <Form.Control.Feedback type="invalid">
+            Pole wymagane
+          </Form.Control.Feedback>
+        </Form.Group>
 
         <Button variant="secondary" onClick={handleSubmit}>
           Zamawiam i płacę
