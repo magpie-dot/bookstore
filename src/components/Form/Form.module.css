@@ -7,3 +7,43 @@
     margin: 50px auto;
     font-size: 2rem;
 }
+
+.listGroup {
+    display: flex;
+    justify-content: space-between;
+}
+
+.listItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.smallContainer {
+    margin: auto 1rem
+}
+
+.image {
+    width: 5rem;
+}
+
+.title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    max-width: 300px;
+    text-align: start;
+}
+
+.smallText {
+    font-size: 0.9rem;
+    color: darkgrey;
+    text-align: start;
+}
+
+.priceGroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: gray;
+}

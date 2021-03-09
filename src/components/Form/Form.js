@@ -5,6 +5,7 @@ import style from "./Form.module.css";
 import { clearCart } from "../../state/cart/actions";
 import checkValidation from "./utils";
 import EndOfOrder from "./EndOfOrder";
+import OrderedBooks from "./OrderedBooks";
 
 const initialFormData = {
   first_name: "",
@@ -65,6 +66,9 @@ const Formular = ({ booksInCart, clearCart }) => {
 
   return !isOrder ? (
     <div className={style.formularBox}>
+      <h4>Twoje zamówienie</h4>
+      <OrderedBooks/>
+      <h4 style={{margin:"1rem 0 2rem",}}>Adres do zamówienia</h4>    
       <Form>
 
         <Form.Group>
@@ -208,6 +212,10 @@ const Formular = ({ booksInCart, clearCart }) => {
             Pole wymagane
           </Form.Control.Feedback>
         </Form.Group>
+
+        <Form.Group as={Col}>
+    <Form.Check type="checkbox" label="Akceptuję regulamin sklepu" />
+  </Form.Group>
 
         <Button variant="secondary" onClick={handleSubmit}>
           Zamawiam i płacę
