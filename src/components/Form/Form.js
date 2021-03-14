@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Form, Button, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 import style from "./Form.module.css";
@@ -13,19 +13,10 @@ const initialFormData = {
   zip_code: "",
 };
 
-const Formular = ({ booksInCart, clearCart }) => {
+const Formular = ({ clearCart }) => {
   const [formData, setFormData] = useState(initialFormData);
   const [validation, setValidation] = useState(true);
   const [isOrder, setIsOrder] = useState(false);
-  const [order, setOrder] = useState([]);
-
-  const prepareBooksInCartToPost = (booksInCart) => {
-    const idsArray = Object.keys(booksInCart);
-    const orderToPost = idsArray.map((id) => {
-      return { id: Number(id), quantity: booksInCart[id].quantity };
-    });
-    setOrder(orderToPost);
-  };
 
   const handleSubmit = () => {
     let validationElements = checkValidation(formData);
@@ -38,7 +29,6 @@ const Formular = ({ booksInCart, clearCart }) => {
           clearCart();
           setFormData(initialFormData);
           setValidation(true);
-          setOrder([]);
           setIsOrder(true);      
     }
   };
@@ -51,10 +41,6 @@ const Formular = ({ booksInCart, clearCart }) => {
     let validationElements = checkValidation(formData);
     return validationElements[element];
   };
-
-  useEffect(() => {
-    prepareBooksInCartToPost(booksInCart);
-  }, []);
 
   return !isOrder ? (
     <div className={style.formularBox}>
