@@ -1,0 +1,60 @@
+@import "../Typography/colors.scss",
+"../Typography/fonts.scss";
+$button-height: 60px;
+$button-regular-width: 256px;
+$button-mobile-width: 208px;
+$button-border-radius: 8px;
+.primary {
+    height: $button-height;
+    width: $button-regular-width;
+    color: $orange;
+    background: transparent;
+    border: 0;
+    border-radius: $button-border-radius;
+    font-size: $regular-font-size;
+    font-weight: $bold-font-weight;
+}
+
+.secondary {
+    height: $button-height;
+    width: $button-regular-width;
+    color: $orange;
+    background: none;
+    border: solid 2px;
+    border-radius: $button-border-radius;
+    font-size: $regular-font-size;
+    font-weight: $bold-font-weight;
+}
+
+.hover {
+    height: $button-height;
+    width: $button-regular-width;
+    color: $white;
+    background: $gradient;
+    border: 0;
+    border-radius: $button-border-radius;
+    font-size: $regular-font-size;
+    font-weight: $bold-font-weight;
+}
+
+.primary-disabled {
+    height: $button-height;
+    width: $button-regular-width;
+    color: $darkgrey;
+    background: transparent;
+    border: 0;
+    border-radius: $button-border-radius;
+    font-size: $regular-font-size;
+    font-weight: $bold-font-weight;
+}
+
+.secondary-disabled {
+    height: $button-height;
+    width: $button-regular-width;
+    color: $darkgrey;
+    background: none;
+    border: solid 2px;
+    border-radius: $button-border-radius;
+    font-size: $regular-font-size;
+    font-weight: $bold-font-weight;
+}
