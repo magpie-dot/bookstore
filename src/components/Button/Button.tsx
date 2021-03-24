@@ -1,4 +1,3 @@
-import React from "react";
 import "./button.scss"
 
 const Button = (props: {buttonName: string, styleButton: string, handleOnClick: any}) => {

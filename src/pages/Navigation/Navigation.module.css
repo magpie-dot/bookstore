@@ -1,3 +1,14 @@
 .cartIcon {
     margin: auto 2rem
 }
+
+.title {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.titleGradient {
+    background: linear-gradient(83.27deg, #FFFFFF -8.61%, #F64E64 -8.6%, #F7805F 65.61%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

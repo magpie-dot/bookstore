@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import fetchBooks from "../../state/books/actions";
 import Search from "./Search";

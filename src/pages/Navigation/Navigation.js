@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, Badge } from "react-bootstrap";
 import { connect } from "react-redux";
@@ -9,11 +8,11 @@ const Navigation = ({ totalBooks, children }) => {
   return (
     <>
       <Navbar sticky="top" bg="dark" variant="dark">
-        <Navbar.Brand>Księgarnia</Navbar.Brand>
+      <Link className={style.link} to="/"><Navbar.Brand><span className={styles.title}><span className={styles.titleGradient}>Book</span>'arnia</span></Navbar.Brand>
+      </Link>
         <Nav className="mr-auto">
-          <Link className={style.link} to="/">
-            Strona główna
-          </Link>
+          
+          
         </Nav>
         <Nav>
           <Link to="/cart">
@@ -26,8 +25,8 @@ const Navigation = ({ totalBooks, children }) => {
               className={styles.cartIcon}
               src="images/shopping-cart.svg"
               alt="cart"
-              height="43"
-              width="50"
+              height="21"
+              width="24"
             />
           </Link>
         </Nav>

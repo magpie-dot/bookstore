@@ -1,4 +1,3 @@
-import React from "react";
 import { Card } from "react-bootstrap";
 import { connect } from "react-redux";
 import { addProductToCart } from "../../state/cart/actions";
