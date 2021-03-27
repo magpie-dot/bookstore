@@ -14,6 +14,13 @@ $badge-size: 14px;
     font-size: $small-font-size;
     font-weight: $bold-font-weight;
     position: absolute;
-    right: 21px;
-    top: 16px;
+    right: 24px;
+    top: 14px;
+    z-index: 1;
+}
+
+@media (min-width: $phone-width) {
+    .base {
+        top: 24px;
+    }
 }
