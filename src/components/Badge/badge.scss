@@ -1,0 +1,19 @@
+@import "../../styles/colors.scss",
+"../../styles/fonts.scss",
+"../../styles/constants.scss";
+$badge-size: 14px;
+.base {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: $badge-size;
+    width: $badge-size;
+    color: $orange;
+    background-color: $white;
+    border-radius: 50%;
+    font-size: $small-font-size;
+    font-weight: $bold-font-weight;
+    position: absolute;
+    right: 21px;
+    top: 16px;
+}
