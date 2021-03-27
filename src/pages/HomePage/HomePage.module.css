@@ -9,6 +9,10 @@
     width: 18rem;
 }
 
+.card {
+    z-index: -2;
+}
+
 .container {
     height: 100%;
     display: flex;

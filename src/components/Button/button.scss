@@ -1,60 +1,60 @@
-@import "../Typography/colors.scss",
-"../Typography/fonts.scss";
+@import "../../styles/colors.scss",
+"../../styles/fonts.scss",
+"../../styles/constants.scss";
 $button-height: 60px;
 $button-regular-width: 256px;
 $button-mobile-width: 208px;
-$button-border-radius: 8px;
-.primary {
+.button {
     height: $button-height;
-    width: $button-regular-width;
+    width: $button-mobile-width;
+    border-radius: $border-radius;
+    font-size: $regular-font-size;
+    font-weight: $bold-font-weight;
+}
+
+.primary {
+    @extend .button;
     color: $orange;
     background: transparent;
     border: 0;
-    border-radius: $button-border-radius;
-    font-size: $regular-font-size;
-    font-weight: $bold-font-weight;
 }
 
 .secondary {
-    height: $button-height;
-    width: $button-regular-width;
+    @extend .button;
     color: $orange;
-    background: none;
-    border: solid 2px;
-    border-radius: $button-border-radius;
-    font-size: $regular-font-size;
-    font-weight: $bold-font-weight;
+    background: white;
+    border: none;
+    position: relative;
+}
+
+.secondary::before {
+    content: "";
+    background: $gradient;
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: $button-mobile-width + 6px;
+    height: $button-height + 6px;
+    z-index: -1;
+    border-radius: 12px;
 }
 
 .hover {
-    height: $button-height;
-    width: $button-regular-width;
+    @extend .button;
     color: $white;
     background: $gradient;
     border: 0;
-    border-radius: $button-border-radius;
-    font-size: $regular-font-size;
-    font-weight: $bold-font-weight;
 }
 
-.primary-disabled {
-    height: $button-height;
-    width: $button-regular-width;
+.disabled {
     color: $darkgrey;
-    background: transparent;
-    border: 0;
-    border-radius: $button-border-radius;
-    font-size: $regular-font-size;
-    font-weight: $bold-font-weight;
 }
 
-.secondary-disabled {
-    height: $button-height;
-    width: $button-regular-width;
-    color: $darkgrey;
-    background: none;
-    border: solid 2px;
-    border-radius: $button-border-radius;
-    font-size: $regular-font-size;
-    font-weight: $bold-font-weight;
+@media (min-width: $phone-width) {
+    .button {
+        width: $button-regular-width
+    }
+    .secondary::before {
+        width: $button-regular-width + 6px;
+    }
 }
