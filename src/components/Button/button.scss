@@ -1,11 +1,10 @@
 @import "../../styles/colors.scss",
 "../../styles/fonts.scss",
 "../../styles/constants.scss";
-$button-height: 60px;
 $button-regular-width: 256px;
 $button-mobile-width: 208px;
 .button {
-    height: $button-height;
+    height: $components-height;
     width: $button-mobile-width;
     border-radius: $border-radius;
     font-size: $regular-font-size;
@@ -34,16 +33,17 @@ $button-mobile-width: 208px;
     top: -3px;
     left: -3px;
     width: $button-mobile-width + 6px;
-    height: $button-height + 6px;
+    height: $components-height + 6px;
     z-index: -1;
     border-radius: 12px;
 }
 
-.hover {
+.primary:hover {
     @extend .button;
     color: $white;
     background: $gradient;
     border: 0;
+    transition: 0.4s;
 }
 
 .disabled {

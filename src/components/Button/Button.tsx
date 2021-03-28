@@ -3,13 +3,13 @@ import "./button.scss"
 
 interface ButtonProps {
     buttonName: string,
-    styleButton: string,
+    variant: string,
     handleOnClick: () => void
 }
 
-const Button: React.FC<ButtonProps> = ({buttonName, styleButton, handleOnClick}) => {
+const Button: React.FC<ButtonProps> = ({buttonName, variant, handleOnClick}) => {
     return (
-        <button className={styleButton} onClick={handleOnClick}>
+        <button className={variant} onClick={handleOnClick}>
             {buttonName}
         </button>
     )

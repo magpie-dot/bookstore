@@ -17,7 +17,7 @@ const BookCard = ({ book, addProductToCart }) => {
             <Card.Text>Autor: {book.author}</Card.Text>
             <Card.Text>Liczba stron: {book.pages}</Card.Text>
           </div>
-          <Button buttonName="Dodaj do koszyka" styleButton="primary" handleOnClick={() => addProductToCart(book.id)}>
+          <Button buttonName="Dodaj do koszyka" variant="primary" handleOnClick={() => addProductToCart(book.id)}>
           </Button>
         </Card.Body>
       </Card>
