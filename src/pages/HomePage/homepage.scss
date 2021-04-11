@@ -19,15 +19,19 @@ $desktop-image-width: 120px;
     margin: 36px;
     background-color: $white;
     border-radius: $border-radius;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-// .card-info-icon {
-//     display: none;
-// }
+.card-info-icon {
+    display: none;
+}
+
 .image-container {
     height: $mobile-image-height;
     width: $mobile-image-width;
-    margin: 20px auto;
+    margin: 20px auto auto;
     border-radius: 1/2*$border-radius;
 }
 
@@ -66,14 +70,18 @@ $desktop-image-width: 120px;
     margin: 0;
 }
 
+.card-button {
+    border-radius: 0 $border-radius;
+}
+
 .card-first-line {
     width: 170px;
     color: $darkgrey;
-    margin: 23px auto 14px;
+    margin: auto;
 }
 
 .card-second-line {
     width: 170px;
     border-top: 0.5px solid $orange;
-    margin: 8px auto 0;
+    margin: 8px auto -1px;
 }
