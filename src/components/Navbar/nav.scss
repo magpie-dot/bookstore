@@ -37,7 +37,7 @@ $logo-gradient: linear-gradient(83.27deg, #FFFFFF -8.61%, #F64E64 -8.6%, #F7805F
     margin-left: 16px;
 }
 
-@media (min-width: $phone-width) {
+@media (min-width: $desktop-width) {
     .nav-background {
         height: $desktop-height;
     }

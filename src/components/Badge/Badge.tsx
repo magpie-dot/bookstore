@@ -2,13 +2,13 @@ import React from "react";
 import "./badge.scss"
 
 interface BadgeProps {
-    numberOfBooks: number,
+    children: number,
 }
 
-const Badge: React.FC<BadgeProps> = ({numberOfBooks}) => {
+const Badge: React.FC<BadgeProps> = ({children}) => {
     return (
         <div className="base">
-            {numberOfBooks}
+            {children}
         </div>
     )
 }

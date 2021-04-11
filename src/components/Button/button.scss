@@ -50,7 +50,7 @@ $button-mobile-width: 208px;
     color: $darkgrey;
 }
 
-@media (min-width: $phone-width) {
+@media (min-width: $desktop-width) {
     .button {
         width: $button-regular-width
     }

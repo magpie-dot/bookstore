@@ -19,7 +19,7 @@ $badge-size: 14px;
     z-index: 1;
 }
 
-@media (min-width: $phone-width) {
+@media (min-width: $desktop-width) {
     .base {
         top: 24px;
     }

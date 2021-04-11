@@ -37,7 +37,7 @@ const HomePage = (props) => {
   return  (
     <>
     <div className="search-bar-container">
-      <Input variant="search-bar" onValueChange={onValueChange} placeholderText="Wpisz tytuł książki, której szukasz..."/>
+      <Input variant="search-bar" onChange={onValueChange} placeholderText="Wpisz tytuł książki, której szukasz..."/>
       </div>
       <div className={style.bookCards}>
         {searchTerm !== "" && bookList.length === 0 ? (

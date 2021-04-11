@@ -22,7 +22,7 @@ $desktop-icon-size: 20px;
     color: $darkblue;
 }
 
-@media (min-width: $phone-width) {
+@media (min-width: $desktop-width) {
     .search-bar {
         font-size: $small-title-font-size;
         width: $input-desktop-width;

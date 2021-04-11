@@ -18,7 +18,7 @@ const Navigation = ({ totalBooks }) => {
             <img
               className="cartIcon"
               src="images/shopping-cart.svg"
-              alt="cart"></img>
+              alt="cart"/>
           </Link>
           </div>
       </div>

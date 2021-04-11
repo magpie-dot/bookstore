@@ -3,13 +3,13 @@ import "./input.scss"
 
 interface InputProps {
     variant: string,
-    placeholderText: string,
-    onValueChange: () => void
+    placeholder: string,
+    onChange: () => void
 }
 
-const Input: React.FC<InputProps> = ({variant, onValueChange, placeholderText}) => {
+const Input: React.FC<InputProps> = ({variant, onChange, placeholder}) => {
     return (
-        <input type="text" className={variant} onChange={onValueChange} placeholder={placeholderText}/>
+        <input type="text" className={variant} onChange={onChange} placeholder={placeholder}/>
     )
 }
 
