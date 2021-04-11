@@ -22,31 +22,35 @@ $desktop-image-width: 120px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
 }
 
 .card-info-icon {
     display: none;
+    position: absolute;
+    top: 13px;
+    right: 17px;
 }
 
 .image-container {
     height: $mobile-image-height;
     width: $mobile-image-width;
-    margin: 20px auto auto;
+    margin: 20px auto;
     border-radius: 1/2*$border-radius;
 }
 
 .book-cover-image {
+    height: 100%;
     width: 100%;
-    object-fit: contain;
+    object-fit: cover;
     border-radius: 1/2*$border-radius;
 }
 
 .card-small-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     text-align: left;
-    margin: 0 16px;
+    margin: 0 19px;
 }
 
 .book-category {
@@ -60,7 +64,14 @@ $desktop-image-width: 120px;
     font-weight: $bold-font-weight;
     font-size: $small-title-font-size;
     line-height: 24px;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+}
+
+.book-author {
+    display: none;
+    font-size: $regular-font-size;
+    line-height: 18.5px;
+    margin: 0;
 }
 
 .book-price {
@@ -84,4 +95,31 @@ $desktop-image-width: 120px;
     width: 170px;
     border-top: 0.5px solid $orange;
     margin: 8px auto -1px;
+}
+
+@media (min-width: $desktop-width) {
+    .card-container {
+        height: $desktop-card-height;
+        width: $desktop-card-width;
+    }
+    .card-info-icon {
+        display: block;
+    }
+    .image-container {
+        height: $desktop-image-height;
+        width: $desktop-image-width;
+        margin: 34px auto 20px;
+    }
+    .card-small-container {
+        margin: 0 23px;
+    }
+    .book-author {
+        display: block;
+    }
+    .card-first-line {
+        width: 210px;
+    }
+    .card-second-line {
+        width: 210px;
+    }
 }
