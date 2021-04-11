@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { addProductToCart } from "../../state/cart/actions";
-import style from "./HomePage.module.css";
 import Button from "../../components/Button";
+import "./homepage.scss"
 
 
 const BookCard= ({book, addProductToCart}) => {
@@ -10,39 +10,23 @@ const BookCard= ({book, addProductToCart}) => {
         return ((price / 100)).toFixed(2);
       };
     return (
-        <div style={{ width: "18rem", margin: "1rem" }} className="container" key={book.id}>
-            <img src="images/info.jpg"/>
-            <div> <img src={book.cover_url}/></div>
+        <div className="card-container" key={book.id}>
+            <img className="card-info-icon" src="images/info.jpg"/>
+            <div className="image-container"> <img className="book-cover-image" src={book.cover_url}/></div>
+            <hr className="card-first-line"/>
             <div>
-                <p>{book.category}</p>
-                <p>{book.title}</p>
-                <p>{book.author}</p>
-                <p>{showPrice(book.price)} zł</p>
+                <div className="card-small-container">
+                <p className="book-category">{book.category}</p>
+                <p className="book-title">{book.title}</p>
+                </div>
+                <p className="book-price">{showPrice(book.price)} zł</p>
             </div>
+            <hr className="card-second-line"/>
             <Button buttonName="Dodaj do koszyka" variant="primary" handleOnClick={() => addProductToCart(book.id)}/>
         </div>
     )
 }
 
-// const BookCard = ({ book, addProductToCart }) => {
-//   return (
-//     <>
-//       <Card style={{ width: "18rem", margin: "1rem" }} key={book.id}>
-//         <Card.Img variant="top" src={book.cover_url} />
-
-//         <Card.Body className={style.container}>
-//           <div className={style.smallContainer}>
-//             <Card.Title>{book.title}</Card.Title>
-//             <Card.Text>Autor: {book.author}</Card.Text>
-//             <Card.Text>Liczba stron: {book.pages}</Card.Text>
-//           </div>
-//           <Button buttonName="Dodaj do koszyka" variant="primary" handleOnClick={() => addProductToCart(book.id)}>
-//           </Button>
-//         </Card.Body>
-//       </Card>
-//     </>
-//   );
-// };
 
 const mapDispatchToProps = {
   addProductToCart,

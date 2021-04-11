@@ -1,3 +1,79 @@
+@import "../../styles/colors.scss",
+"../../styles/fonts.scss",
+"../../styles/constants.scss";
+$mobile-card-height: 366px;
+$mobile-card-width: 208px;
+$desktop-card-height: 468px;
+$desktop-card-width: 256px;
+$mobile-image-height: 110px;
+$mobile-image-width: 80px;
+$desktop-image-height: 160px;
+$desktop-image-width: 120px;
 .search-bar-container {
     padding: 32px;
+}
+
+.card-container {
+    height: $mobile-card-height;
+    width: $mobile-card-width;
+    margin: 36px;
+    background-color: $white;
+    border-radius: $border-radius;
+}
+
+// .card-info-icon {
+//     display: none;
+// }
+.image-container {
+    height: $mobile-image-height;
+    width: $mobile-image-width;
+    margin: 20px auto;
+    border-radius: 1/2*$border-radius;
+}
+
+.book-cover-image {
+    width: 100%;
+    object-fit: contain;
+    border-radius: 1/2*$border-radius;
+}
+
+.card-small-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    margin: 0 16px;
+}
+
+.book-category {
+    font-size: $small-font-size;
+    text-transform: capitalize;
+    color: $lightblue;
+    margin-bottom: 2px;
+}
+
+.book-title {
+    font-weight: $bold-font-weight;
+    font-size: $small-title-font-size;
+    line-height: 24px;
+    margin-bottom: 5px;
+}
+
+.book-price {
+    font-size: $title-font-size;
+    font-weight: $bold-font-weight;
+    color: $orange;
+    margin: 0;
+}
+
+.card-first-line {
+    width: 170px;
+    color: $darkgrey;
+    margin: 23px auto 14px;
+}
+
+.card-second-line {
+    width: 170px;
+    border-top: 0.5px solid $orange;
+    margin: 8px auto 0;
 }
