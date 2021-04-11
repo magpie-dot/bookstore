@@ -23,11 +23,13 @@ $logo-gradient: linear-gradient(83.27deg, #FFFFFF -8.61%, #F64E64 -8.6%, #F7805F
     height: 21px;
     width: 24px;
     margin-right: 29px;
+    cursor: pointer;
 }
 
 .title {
     font-size: $small-logo-font-size;
     font-weight: $bold-font-weight;
+    cursor: pointer;
 }
 
 .titleGradient {
@@ -35,6 +37,7 @@ $logo-gradient: linear-gradient(83.27deg, #FFFFFF -8.61%, #F64E64 -8.6%, #F7805F
     background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-left: 16px;
+    cursor: pointer;
 }
 
 @media (min-width: $desktop-width) {

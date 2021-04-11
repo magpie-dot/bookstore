@@ -13,6 +13,18 @@ $desktop-image-width: 120px;
     padding: 32px;
 }
 
+.homepage-container {
+    background-color: $lightgrey;
+}
+
+.homepage-cards-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
 .card-container {
     height: $mobile-card-height;
     width: $mobile-card-width;
@@ -101,6 +113,11 @@ $desktop-image-width: 120px;
     .card-container {
         height: $desktop-card-height;
         width: $desktop-card-width;
+        margin: 50px 15px
+    }
+    .card-container:hover {
+        box-shadow: 8px 16px 16px rgba(0, 0, 0, 0.08);
+        transition: 0.4s;
     }
     .card-info-icon {
         display: block;
