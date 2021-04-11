@@ -1,4 +1,3 @@
-import React from "react";
 import { Button, ButtonGroup } from "react-bootstrap";
 import styles from "./Cart.module.css";
 import { connect } from "react-redux";

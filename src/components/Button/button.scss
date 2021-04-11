@@ -1,0 +1,60 @@
+@import "../../styles/colors.scss",
+"../../styles/fonts.scss",
+"../../styles/constants.scss";
+$button-regular-width: 256px;
+$button-mobile-width: 208px;
+.button {
+    height: $components-height;
+    width: $button-mobile-width;
+    border-radius: $border-radius;
+    font-size: $regular-font-size;
+    font-weight: $bold-font-weight;
+}
+
+.primary {
+    @extend .button;
+    color: $orange;
+    background: transparent;
+    border: 0;
+}
+
+.secondary {
+    @extend .button;
+    color: $orange;
+    background: white;
+    border: none;
+    position: relative;
+}
+
+.secondary::before {
+    content: "";
+    background: $gradient;
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: $button-mobile-width + 6px;
+    height: $components-height + 6px;
+    z-index: -1;
+    border-radius: 12px;
+}
+
+.primary:hover {
+    @extend .button;
+    color: $white;
+    background: $gradient;
+    border: 0;
+    transition: 0.4s;
+}
+
+.disabled {
+    color: $darkgrey;
+}
+
+@media (min-width: $desktop-width) {
+    .button {
+        width: $button-regular-width
+    }
+    .secondary::before {
+        width: $button-regular-width + 6px;
+    }
+}

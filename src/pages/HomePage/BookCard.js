@@ -1,8 +1,9 @@
-import React from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { connect } from "react-redux";
 import { addProductToCart } from "../../state/cart/actions";
 import style from "./HomePage.module.css";
+import Button from "../../components/Button";
+
 
 const BookCard = ({ book, addProductToCart }) => {
   return (
@@ -16,8 +17,7 @@ const BookCard = ({ book, addProductToCart }) => {
             <Card.Text>Autor: {book.author}</Card.Text>
             <Card.Text>Liczba stron: {book.pages}</Card.Text>
           </div>
-          <Button variant="info" onClick={() => addProductToCart(book.id)}>
-            Dodaj do koszyka
+          <Button buttonName="Dodaj do koszyka" variant="primary" handleOnClick={() => addProductToCart(book.id)}>
           </Button>
         </Card.Body>
       </Card>

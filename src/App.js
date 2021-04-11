@@ -1,29 +1,28 @@
 import style from "./App.module.css";
-import HomePage from "./components/HomePage";
-import Navigation from "./components/Navigation";
-import Cart from "./components/Cart";
-import Formular from "./components/Form/Form";
+import HomePage from "./pages/HomePage";
+import Navigation from "./components/Navbar";
+import Cart from "./pages/Cart";
+import Formular from "./pages/Form/Form";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-function App() {
+const App = () => {
   return (
     <div className={style.App}>
       <Router>
-        <Switch>
-          <Navigation>
+          <Navigation/>
+          <Switch>
             <Route exact path="/">
               <HomePage />
-            </Route>{" "}
+            </Route>
             <Route path="/cart">
               <Cart />
-            </Route>{" "}
+            </Route>
             <Route path="/formular">
               <Formular />
-            </Route>{" "}
-          </Navigation>{" "}
-        </Switch>{" "}
-      </Router>{" "}
+            </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }

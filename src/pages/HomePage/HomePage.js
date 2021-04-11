@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import fetchBooks from "../../state/books/actions";
-import Search from "./Search";
 import BookCard from "./BookCard";
+import Input from "../../components/Input";
 import style from "./HomePage.module.css";
+import "./homepage.scss"
 
 const HomePage = (props) => {
   const {fetchBooks, books, isLoading} = props;
@@ -35,7 +36,9 @@ const HomePage = (props) => {
 
   return  (
     <>
-      <Search onValueChange={onValueChange} />
+    <div className="search-bar-container">
+      <Input variant="search-bar" onChange={onValueChange} placeholderText="Wpisz tytuł książki, której szukasz..."/>
+      </div>
       <div className={style.bookCards}>
         {searchTerm !== "" && bookList.length === 0 ? (
           <div style={{ fontSize: 20 }}>
