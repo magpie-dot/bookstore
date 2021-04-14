@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import fetchBooks from "../../state/books/actions";
 import BookCard from "./BookCard";
 import Input from "../../components/Input";
-import style from "./HomePage.module.css";
 import "./homepage.scss";
 
 const HomePage = (props) => {

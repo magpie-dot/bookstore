@@ -9,11 +9,10 @@ const BookCard = ({ book, addProductToCart }) => {
   };
   return (
     <div className="card-container" key={book.id}>
-      <img className="card-info-icon" src="images/info-icon.svg" />
+      <img className="card-info-icon" src="images/info-icon.svg" alt="info icon"/>
       <div>
         <div className="image-container">
-          {" "}
-          <img className="book-cover-image" src={book.cover_url} />
+          <img className="book-cover-image" src={book.cover_url} alt="book cover"/>
         </div>
         <hr className="card-first-line" />
       </div>
