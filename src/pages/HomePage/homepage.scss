@@ -1,3 +1,142 @@
+@import "../../styles/colors.scss",
+"../../styles/fonts.scss",
+"../../styles/constants.scss";
+$mobile-card-height: 366px;
+$mobile-card-width: 208px;
+$desktop-card-height: 468px;
+$desktop-card-width: 256px;
+$mobile-image-height: 110px;
+$mobile-image-width: 80px;
+$desktop-image-height: 160px;
+$desktop-image-width: 120px;
 .search-bar-container {
     padding: 32px;
+}
+
+.homepage-container {
+    background-color: $lightgrey;
+}
+
+.homepage-cards-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.card-container {
+    height: $mobile-card-height;
+    width: $mobile-card-width;
+    margin: 36px;
+    background-color: $white;
+    border-radius: $border-radius;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.card-info-icon {
+    display: none;
+    position: absolute;
+    top: 13px;
+    right: 17px;
+}
+
+.image-container {
+    height: $mobile-image-height;
+    width: $mobile-image-width;
+    margin: 20px auto;
+    border-radius: 1/2*$border-radius;
+}
+
+.book-cover-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1/2*$border-radius;
+}
+
+.card-small-container {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: 0 19px;
+}
+
+.book-category {
+    font-size: $small-font-size;
+    text-transform: capitalize;
+    color: $lightblue;
+    margin-bottom: 2px;
+}
+
+.book-title {
+    font-weight: $bold-font-weight;
+    font-size: $small-title-font-size;
+    line-height: 24px;
+    margin-bottom: 8px;
+}
+
+.book-author {
+    display: none;
+    font-size: $regular-font-size;
+    line-height: 18.5px;
+    margin: 0;
+}
+
+.book-price {
+    font-size: $title-font-size;
+    font-weight: $bold-font-weight;
+    color: $orange;
+    margin: 0;
+}
+
+.card-button {
+    border-radius: 0 $border-radius;
+}
+
+.card-first-line {
+    width: 170px;
+    color: $darkgrey;
+    margin: auto;
+}
+
+.card-second-line {
+    width: 170px;
+    border-top: 0.5px solid $orange;
+    margin: 8px auto -1px;
+}
+
+@media (min-width: $desktop-width) {
+    .card-container {
+        height: $desktop-card-height;
+        width: $desktop-card-width;
+        margin: 50px 15px
+    }
+    .card-container:hover {
+        box-shadow: 8px 16px 16px rgba(0, 0, 0, 0.08);
+        transition: 0.4s;
+    }
+    .card-info-icon {
+        display: block;
+    }
+    .image-container {
+        height: $desktop-image-height;
+        width: $desktop-image-width;
+        margin: 34px auto 20px;
+    }
+    .card-small-container {
+        margin: 0 23px;
+    }
+    .book-author {
+        display: block;
+    }
+    .card-first-line {
+        width: 210px;
+    }
+    .card-second-line {
+        width: 210px;
+    }
 }

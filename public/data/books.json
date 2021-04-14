@@ -5,7 +5,8 @@
         "cover_url": "images/book/457.jpg",
         "pages": 280,
         "price": 3200,
-        "currency": "PLN"
+        "currency": "PLN",
+        "category": "podręcznik"
     },
     {
         "id": 458,
@@ -14,7 +15,8 @@
         "cover_url": "images/book/458.jpg",
         "pages": 300,
         "price": 3300,
-        "currency": "PLN"
+        "currency": "PLN",
+        "category": "podręcznik"
     },
     {
         "id": 905,
@@ -23,7 +25,8 @@
         "cover_url": "images/book/905.jpg",
         "pages": 256,
         "price": 2990,
-        "currency": "PLN"
+        "currency": "PLN",
+        "category": "podręcznik"
     },
     {
         "id": 1227,
@@ -32,7 +35,8 @@
         "cover_url": "images/book/1227.jpg",
         "pages": 344,
         "price": 3230,
-        "currency": "PLN"
+        "currency": "PLN",
+        "category": "podręcznik"
     },
     {
         "id": 1228,
@@ -41,7 +45,8 @@
         "cover_url": "images/book/1228.jpg",
         "pages": 268,
         "price": 3190,
-        "currency": "PLN"
+        "currency": "PLN",
+        "category": "podręcznik"
     },
     {
         "id": 1246,
@@ -50,7 +55,8 @@
         "cover_url": "images/book/1246.jpg",
         "pages": 336,
         "price": 3420,
-        "currency": "PLN"
+        "currency": "PLN",
+        "category": "podręcznik"
     },
     {
         "id": 1250,
@@ -59,7 +65,8 @@
         "cover_url": "images/book/1250.jpg",
         "pages": 256,
         "price": 3190,
-        "currency": "PLN"
+        "currency": "PLN",
+        "category": "podręcznik"
     },
     {
         "id": 1269,
@@ -68,7 +75,8 @@
         "cover_url": "images/book/1269.jpg",
         "pages": 352,
         "price": 3230,
-        "currency": "PLN"
+        "currency": "PLN",
+        "category": "podręcznik"
     },
     {
         "id": 1270,
@@ -77,7 +85,8 @@
         "cover_url": "images/book/1270.jpg",
         "pages": 376,
         "price": 3430,
-        "currency": "PLN"
+        "currency": "PLN",
+        "category": "podręcznik"
     },
     {
         "id": 1271,
@@ -86,7 +95,8 @@
         "author": "T. Małkowski",
         "pages": 160,
         "price": 3050,
-        "currency": "PLN"
+        "currency": "PLN",
+        "category": "podręcznik"
     },
     {
         "id": 1272,
@@ -95,7 +105,8 @@
         "author": "T. Małkowski",
         "pages": 256,
         "price": 3410,
-        "currency": "PLN"
+        "currency": "PLN",
+        "category": "podręcznik"
     },
     {
         "id": 1365,
@@ -104,7 +115,8 @@
         "cover_url": "images/book/1365.jpg",
         "pages": 272,
         "price": 3190,
-        "currency": "PLN"
+        "currency": "PLN",
+        "category": "podręcznik"
     },
     {
         "id": 1374,
@@ -113,7 +125,8 @@
         "cover_url": "images/book/1374.jpg",
         "pages": 288,
         "price": 3420,
-        "currency": "PLN"
+        "currency": "PLN",
+        "category": "podręcznik"
     },
     {
         "id": 1403,
@@ -122,7 +135,8 @@
         "cover_url": "images/book/1403.jpg",
         "pages": 390,
         "price": 3230,
-        "currency": "PLN"
+        "currency": "PLN",
+        "category": "podręcznik"
     },
     {
         "id": 1409,
@@ -131,7 +145,8 @@
         "cover_url": "images/book/1409.jpg",
         "pages": 387,
         "price": 3430,
-        "currency": "PLN"
+        "currency": "PLN",
+        "category": "podręcznik"
     },
     {
         "id": 1415,
@@ -140,7 +155,8 @@
         "author": "T. Małkowski",
         "pages": 224,
         "price": 3050,
-        "currency": "PLN"
+        "currency": "PLN",
+        "category": "podręcznik"
     },
     {
         "id": 1417,
@@ -149,6 +165,7 @@
         "author": "T. Małkowski",
         "pages": 264,
         "price": 3410,
-        "currency": "PLN"
+        "currency": "PLN",
+        "category": "podręcznik"
     }
 ]

@@ -6,7 +6,6 @@ $button-mobile-width: 208px;
 .button {
     height: $components-height;
     width: $button-mobile-width;
-    border-radius: $border-radius;
     font-size: $regular-font-size;
     font-weight: $bold-font-weight;
 }
@@ -14,6 +13,7 @@ $button-mobile-width: 208px;
 .primary {
     @extend .button;
     color: $orange;
+    border-radius: 0 0 $border-radius $border-radius;
     background: transparent;
     border: 0;
 }
@@ -21,6 +21,7 @@ $button-mobile-width: 208px;
 .secondary {
     @extend .button;
     color: $orange;
+    border-radius: $border-radius;
     background: white;
     border: none;
     position: relative;

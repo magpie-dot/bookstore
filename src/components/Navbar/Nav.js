@@ -6,14 +6,13 @@ import style from "../../App.module.css";
 
 const Navigation = ({ totalBooks }) => {
   return (
-    <>
-      <div className="nav-background">
+      <nav className="nav-background">
         <div className="nav">
       <Link className={style.link} to="/"><span className="title"><span className="titleGradient">Book</span>'arnia</span>
       </Link>
           <Link to="/cart">
             {!!totalBooks && (
-              <Badge numberOfBooks={totalBooks}/>
+              <Badge children={totalBooks}/>
             )}
             <img
               className="cartIcon"
@@ -21,8 +20,7 @@ const Navigation = ({ totalBooks }) => {
               alt="cart"/>
           </Link>
           </div>
-      </div>
-    </>
+      </nav>
   );
 };
 
